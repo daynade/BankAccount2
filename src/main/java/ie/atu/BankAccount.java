@@ -33,4 +33,13 @@ public class BankAccount {
     public double getBalance() {
         return balance;
     }
+
+    public double add(double balance, double deposit) {
+        if (deposit <= 0) {
+            throw new IllegalArgumentException("Deposit must be greater than 0.");
+        }
+        return balance + deposit;
+    }
+
+
 }

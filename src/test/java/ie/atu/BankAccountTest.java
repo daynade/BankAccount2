@@ -32,4 +32,18 @@ public class BankAccountTest {
         assertEquals("Balance must be greater than 0.", ex.getMessage());
     }
 
+    @Test
+    void test_positiveDeposit()
+    {
+        account = new BankAccount("ACC12345", "David", 100);
+        assertEquals(120, account.add(account.getBalance(),20));
+    }
+
+    @Test
+    void test_NegativeZeroDeposit()
+    {
+        account = new BankAccount("ACC12345", "David", 0);
+        assertEquals("Deposit must be greater than 0", account.add(account.getBalance(),20));
+    }
+
 }
