@@ -46,6 +46,9 @@ public class BankAccount {
         if (withdrawal <= 0) {
             throw new IllegalArgumentException("Withdrawal must be greater than 0.");
         }
+        else if (balance < withdrawal) {
+            throw new IllegalArgumentException("Withdrawal can not exceed balance.");
+        }
         return balance - withdrawal;
     }
 }
