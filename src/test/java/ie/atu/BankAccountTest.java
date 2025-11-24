@@ -62,4 +62,11 @@ public class BankAccountTest {
         assertEquals("Withdrawal must be greater than 0.", ex.getMessage());
     }
 
+    @Test
+    void test_overdraftWithdrawal()
+    {
+        account = new BankAccount("ACC12345", "David", 100);
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.withdraw(account.getBalance(), 101));
+        assertEquals("Withdrawal can not exceed balance.", ex.getMessage());
+    }
 }
