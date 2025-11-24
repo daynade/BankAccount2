@@ -42,8 +42,24 @@ public class BankAccountTest {
     @Test
     void test_NegativeZeroDeposit()
     {
-        account = new BankAccount("ACC12345", "David", 0);
-        assertEquals("Deposit must be greater than 0", account.add(account.getBalance(),20));
+        account = new BankAccount("ACC12345", "David", 100);
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.add(account.getBalance(), 0));
+        assertEquals("Deposit must be greater than 0.", ex.getMessage());
+    }
+
+    @Test
+    void test_withdrawal()
+    {
+        account = new BankAccount("ACC12345", "David", 100);
+        assertEquals(50, account.withdraw(account.getBalance(), 50));
+    }
+
+    @Test
+    void test_NegativeZeroWithdrawal()
+    {
+        account = new BankAccount("ACC12345", "David", 100);
+        Exception ex = assertThrows(IllegalArgumentException.class, () -> account.withdraw(account.getBalance(), -50));
+        assertEquals("Withdrawal must be greater than 0.", ex.getMessage());
     }
 
 }

@@ -42,4 +42,10 @@ public class BankAccount {
     }
 
 
+    public double withdraw(double balance, double withdrawal) {
+        if (withdrawal <= 0) {
+            throw new IllegalArgumentException("Withdrawal must be greater than 0.");
+        }
+        return balance - withdrawal;
+    }
 }
